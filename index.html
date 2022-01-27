@@ -11,8 +11,9 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link rel="manifest" href="dist/manifest.json" />
 
-    <script src="./dist/main.bundle.js" defer></script>
+    <script src="./dist/app.bundle.js" defer></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -234,4 +235,16 @@
       </div>
     </footer>
   </body>
+  <script>
+    (function () {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('./service-worker.js')
+          .then(() => console.log('Service Worker registered successfully.'))
+          .catch((err) =>
+            console.log('Service Worker registration failed:', err)
+          );
+      }
+    })();
+  </script>
 </html>
